@@ -1,0 +1,2 @@
+# frequenciometro_digital
+CONTROLE DE FREQUÊNCIA DO COLÉGIO JORGE QUEIROZ NETTO
