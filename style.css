@@ -1,0 +1,255 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+}
+
+body {
+    background: linear-gradient(145deg, #eef5ff 0%, #d9eaff 100%);
+    padding: 2rem 1.5rem;
+    color: #0a2b3e;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* cabeçalho */
+.header {
+    background: #0a2f44;
+    border-radius: 2rem;
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 15px 30px rgba(0, 40, 60, 0.2);
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.school-info h1 {
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.school-info h1 i {
+    background: #ffb347;
+    padding: 8px;
+    border-radius: 50%;
+    color: #0a2f44;
+}
+
+.badge-dev {
+    background: #ffb347;
+    color: #0a2f44;
+    padding: 0.5rem 1.2rem;
+    border-radius: 40px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-align: right;
+}
+
+/* DESTAQUE DO RANKING - POPUP MAIOR */
+.ranking-destaque {
+    background: linear-gradient(135deg, #0a2f44 0%, #1b4f6e 100%);
+    border-radius: 2rem;
+    margin-bottom: 2rem;
+    padding: 1.2rem 1.8rem;
+    box-shadow: 0 20px 35px rgba(0,0,0,0.2);
+    border: 1px solid rgba(255,180,71,0.5);
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.ranking-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #ffb347;
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    border-bottom: 2px dashed #ffb347;
+    padding-bottom: 0.5rem;
+}
+
+.ranking-podium {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 1rem;
+    text-align: center;
+}
+
+.podium-card {
+    background: white;
+    border-radius: 1.5rem;
+    padding: 1rem 1rem;
+    flex: 1;
+    min-width: 160px;
+    transition: transform 0.2s;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.podium-card:hover {
+    transform: scale(1.02);
+}
+
+.podium-medal {
+    font-size: 3rem;
+}
+
+.podium-turma {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #0a2f44;
+}
+
+.podium-freq {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffb347;
+}
+
+.podium-stats {
+    color: #2c5a74;
+    margin-top: 5px;
+}
+
+/* formulário de faltas */
+.form-faltas {
+    background: white;
+    border-radius: 1.8rem;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+    border-left: 8px solid #ffb347;
+}
+
+.form-faltas h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: #0a2f44;
+}
+
+.form-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: flex-end;
+}
+
+.input-group {
+    flex: 1;
+    min-width: 180px;
+}
+
+.input-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #0f3b55;
+}
+
+.input-group select, .input-group input {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 40px;
+    border: 1px solid #cbd5e1;
+    background: #fefefe;
+    font-size: 1rem;
+}
+
+button {
+    background: #0a2f44;
+    border: none;
+    color: white;
+    padding: 10px 24px;
+    border-radius: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+    font-size: 1rem;
+}
+
+button:hover {
+    background: #ffb347;
+    color: #0a2f44;
+    transform: scale(1.02);
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+    gap: 1.8rem;
+    margin-bottom: 2rem;
+}
+
+.card {
+    background: white;
+    border-radius: 1.8rem;
+    padding: 1.2rem 1.5rem 1.8rem;
+    box-shadow: 0 12px 28px rgba(0, 20, 40, 0.08);
+}
+
+.card h2 {
+    font-size: 1.5rem;
+    border-left: 6px solid #ffb347;
+    padding-left: 0.8rem;
+    margin-bottom: 1rem;
+    color: #0f3b55;
+}
+
+canvas {
+    max-height: 270px;
+    width: 100%;
+}
+
+.tabela-frequencia {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.tabela-frequencia th, .tabela-frequencia td {
+    padding: 10px 8px;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.tabela-frequencia th {
+    background: #eef2fc;
+    color: #0a2f44;
+}
+
+.badge-freq {
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 30px;
+    font-size: 0.8rem;
+}
+
+.alta { background: #d4edda; color: #155724; }
+.media { background: #fff3cd; color: #856404; }
+.baixa { background: #f8d7da; color: #721c24; }
+
+footer {
+    text-align: center;
+    background: #0a2f44;
+    color: #cbdbe6;
+    border-radius: 2rem;
+    padding: 1rem;
+    margin-top: 1.8rem;
+}
+
+@media (max-width: 750px) {
+    body { padding: 1rem; }
+    .dashboard-grid { grid-template-columns: 1fr; }
+    .ranking-podium { flex-direction: column; align-items: center; }
+}

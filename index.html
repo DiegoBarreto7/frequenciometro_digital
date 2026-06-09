@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Frequenciômetro Digital | Controle de Frequência</title>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- CSS externo -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <!-- Cabeçalho institucional -->
+    <div class="header">
+        <div class="school-info">
+            <h1><i class="fas fa-chart-line"></i> Frequenciômetro Digital</h1>
+            <p><i class="fas fa-school"></i> Colégio Estadual Jorge Queiroz Netto – Piraí do Sul, PR</p>
+            <p><i class="fas fa-users"></i> Desenvolvido pelos alunos do <strong>3º Ano B</strong> – Matemática II, Prof. Diego Barreto</p>
+        </div>
+        <div class="badge-dev">
+            <p><i class="fas fa-chart-simple"></i> Controle diário de faltas</p>
+            <p><i class="fas fa-calculator"></i> Base: 35 alunos/turma</p>
+        </div>
+    </div>
+
+    <!-- RANKING DESTAQUE - POPUP MAIOR (destaque principal) -->
+    <div class="ranking-destaque" id="rankingDestaque">
+        <div class="ranking-header">
+            <i class="fas fa-crown"></i> <span>🏆 TOP FREQUÊNCIA - Pódio da Assiduidade 🏆</span>
+        </div>
+        <div class="ranking-podium" id="podiumDinamico">
+            <!-- preenchido via js com as turmas destaque -->
+        </div>
+        <div style="text-align: center; margin-top: 1rem; color: #ffd966;">
+            <i class="fas fa-chart-line"></i> Quanto maior a frequência, mais prêmios e reconhecimento para a turma!
+        </div>
+    </div>
+
+    <!-- FORMULÁRIO PARA REGISTRO DIÁRIO DE FALTAS -->
+    <div class="form-faltas">
+        <h3><i class="fas fa-edit"></i> Registrar faltas do dia (lançamento rápido)</h3>
+        <p style="margin-bottom: 12px; font-size: 0.9rem;">Cada turma possui <strong>35 alunos matriculados</strong>. Informe quantos faltaram hoje para recalcular a porcentagem de presença.</p>
+        <div class="form-grid">
+            <div class="input-group">
+                <label><i class="fas fa-users"></i> Selecione a Turma</label>
+                <select id="selectTurmaFalta">
+                    <option value="1º Ano A">1º Ano A</option>
+                    <option value="1º Ano B">1º Ano B</option>
+                    <option value="1º Ano C">1º Ano C</option>
+                    <option value="2º Ano A">2º Ano A</option>
+                    <option value="2º Ano B">2º Ano B</option>
+                    <option value="3º Ano A">3º Ano A</option>
+                    <option value="3º Ano B">3º Ano B</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label><i class="fas fa-user-slash"></i> Nº de faltas HOJE</label>
+                <input type="number" id="faltasHoje" min="0" max="35" value="0" step="1">
+            </div>
+            <button id="btnRegistrarFalta"><i class="fas fa-save"></i> Registrar & Atualizar</button>
+        </div>
+        <p style="font-size: 0.75rem; margin-top: 12px;"><i class="fas fa-info-circle"></i> O sistema recalcula automaticamente a frequência acumulada com base nas faltas diárias (total de faltas no mês). Considere que cada falta registrada aumenta o acumulado de faltas da turma no mês atual (40 aulas).</p>
+    </div>
+
+    <!-- GRÁFICOS -->
+    <div class="dashboard-grid">
+        <div class="card">
+            <h2><i class="fas fa-chart-column"></i> Frequência por Turma (%)</h2>
+            <canvas id="freqChartBar"></canvas>
+            <p style="font-size: 0.8rem; text-align: center;">Percentual de presença (35 alunos por turma)</p>
+        </div>
+        <div class="card">
+            <h2><i class="fas fa-chart-pie"></i> Média Geral x Meta 85%</h2>
+            <canvas id="doughnutChart"></canvas>
+            <div style="text-align: center; margin-top: 12px;">
+                <span class="badge-freq alta"><i class="fas fa-graduation-cap"></i> Incentivo: frequência ≥85% garante Gincana!</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- TABELA DETALHADA -->
+    <div class="card">
+        <h2><i class="fas fa-table-list"></i> Relação de Frequência (acumulado mensal)</h2>
+        <div style="overflow-x: auto;">
+            <table class="tabela-frequencia" id="tabelaFrequencia">
+                <thead>
+                    <tr>
+                        <th>Turma</th>
+                        <th>Matriculados</th>
+                        <th>Faltas totais (mês)</th>
+                        <th>Presenças</th>
+                        <th>Frequência (%)</th>
+                        <th>Status</th>
+                        <th>Incentivo</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        <p style="margin-top: 1rem; background: #fef7e0; padding: 10px; border-radius: 30px;"><i class="fas fa-lightbulb"></i> <strong>Missão do 3ºB:</strong> Cada falta registrada impacta o gráfico. Vamos melhorar juntos! Turmas com maior frequência ganham destaque no pódio e prêmios simbólicos.</p>
+    </div>
+
+    <footer>
+        <i class="fas fa-chalkboard-user"></i> Frequenciômetro Digital — Projeto Matemática II | Colégio Jorge Queiroz Netto, Piraí do Sul (PR) <br>
+        Dados atualizados dinamicamente com base nas faltas registradas pelos alunos (simulação). Cada turma = 35 alunos.
+    </footer>
+</div>
+
+<!-- JavaScript externo -->
+<script src="script.js"></script>
+</body>
+</html>
